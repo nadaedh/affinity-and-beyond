@@ -1,0 +1,8 @@
+PASS
+15 unique candidate IDs
+15 unique sequences
+all edit distances >= 5
+all lengths <= 260 aa
+exactly one intact (GGGGS)3 linker per sequence
+two VH and two VL conserved cysteines retained; no new cysteines
+canonical amino acids only

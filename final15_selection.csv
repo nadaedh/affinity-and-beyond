@@ -1,0 +1,16 @@
+rank,candidate_id,evidence_tier,group,aa_length,edit_distance,mutation_plan,paired_delta_median,paired_delta_worst,win_rate,pose_ok_rate,epitope_jaccard_median,measured_kd_nM_independent_dataset,selection_note,source
+1,LL_CORE_TTK,computational_leader,core_grid,242,5,H-D31K;H-N55T;H-D102T;L-D28K;L-H91Y,0.078814,0.010353,1.00,1.00,0.880,,Only main-screen design with positive worst-case paired improvement.,leader_candidates.csv
+2,LL_CORE_SYK,computational_leader,core_grid,242,5,H-D31K;H-N55S;H-D102Y;L-D28K;L-H91Y,0.095235,-0.123241,0.75,1.00,0.875,,Highest median improvement; preserved parent-like pose in all four seeds.,leader_candidates.csv
+3,LL_A72R_TYK,computational_leader,a72r,242,6,H-D31K;H-N55T;H-D102Y;L-D28K;L-H91Y;H-A72R,0.074325,-0.043190,0.75,1.00,0.901,,Robust A72R background with strong epitope recovery.,leader_candidates.csv
+4,LL_CORE_STK,computational_leader,core_grid,242,5,H-D31K;H-N55S;H-D102T;L-D28K;L-H91Y,0.044167,-0.003194,0.75,1.00,0.920,,Near-neutral worst case and strongest median epitope overlap among main leaders.,leader_candidates.csv
+5,RAT_04,computational_leader,core_grid,242,5,H-D31K;H-N55T;H-D102F;L-D28K;L-H91Y,0.031834,-0.008119,0.75,1.00,0.926,,Five-edit anchor with excellent pose and epitope robustness.,leader_candidates.csv
+6,R2_A72R_TTK,round2_confirmed,a72r_transfer,242,6,H-D31K;H-N55T;H-A72R;H-D102T;L-D28K;L-H91Y,0.024274,-0.034543,0.75,1.00,0.880,,Focused round-two transfer confirmed over four paired seeds.,round2_candidates.csv
+7,LL_H31M_TYR,computational_leader,h31m,242,5,H-D31M;H-N55T;H-D102Y;L-D28R;L-H91Y,0.032317,-0.002652,0.75,0.75,0.887,,Positive median result with one pose failure; retained for mechanism diversity.,leader_candidates.csv
+8,LL_CORE_SKK,structural_backup,core_grid,242,5,H-D31K;H-N55S;H-D102K;L-D28K;L-H91Y,-0.002111,-0.074058,0.25,0.75,0.818,,Near-parent median and useful H102K matched-pair evidence.,leader_candidates.csv
+9,RAT_19,structural_backup,core_grid,242,5,H-D31K;H-N55T;H-D102Y;L-D28K;L-H91Y,-0.014359,-0.324487,0.50,0.75,0.877,,H102Y matched comparison with strong typical epitope recovery.,leader_candidates.csv
+10,LL_H31M_TYK,structural_backup,h31m,242,5,H-D31M;H-N55T;H-D102Y;L-D28K;L-H91Y,-0.062003,-0.186704,0.25,1.00,0.913,,Parent-like pose in all seeds; H31M mechanism diversification.,leader_candidates.csv
+11,LL_CORE_TKK,structural_backup,core_grid,242,5,H-D31K;H-N55T;H-D102K;L-D28K;L-H91Y,-0.066754,-0.193534,0.50,1.00,0.847,,Parent-like pose in all seeds and H102K matched-pair coverage.,leader_candidates.csv
+12,SPR_01,experimental_anchor,measured,241,6,HCDR3:SRWGGDGFYAMDY>TRWGEYFYFMDL,,,,,,0.630,Independent trastuzumab-scaffold SPR dataset: measured KD 0.63 nM.,candidates_all.csv
+13,SPR_02,experimental_anchor,measured,241,5,HCDR3:SRWGGDGFYAMDY>TRYYYGFYAMDY,,,,,,0.640,Independent trastuzumab-scaffold SPR dataset: measured KD 0.64 nM.,candidates_all.csv
+14,SPR_03,experimental_anchor,measured,242,8,HCDR3:SRWGGDGFYAMDY>TRWYYFIYYYMDV,,,,,,0.870,Independent trastuzumab-scaffold SPR dataset: measured KD 0.87 nM.,candidates_all.csv
+15,SPR_04,experimental_anchor,measured,242,9,HCDR3:SRWGGDGFYAMDY>TRYFFNGWYYFDV,,,,,,0.940,Independent trastuzumab-scaffold SPR dataset: measured KD 0.94 nM.,candidates_all.csv
