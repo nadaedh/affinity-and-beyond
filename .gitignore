@@ -15,3 +15,8 @@ out/
 
 # Cloned tools + model weights (see notes/lab-notebook.md for install)
 tools/
+
+# Raw Boltz predictions: ~971 MB of structures, PAE matrices and MSAs.
+# Regenerate with scripts/run_boltz_screen.sh; the derived scores in
+# results/screen_scores.csv and the final sets are what matter.
+results/boltz/

@@ -421,6 +421,125 @@ All 53 are 242 aa with 5-6 mutations. Ready for Phase 3 cofolding.
 
 ---
 
+## 2026-10-31 — Comparison with `SaniyaSani-patch-1`
+
+That branch holds a **finished submission**: `final15.fasta`,
+`final15_selection.csv`, `VALIDATION.txt`. They have already done our Phase 3.
+
+### Their validation independently confirmed
+15 unique ids, 15 unique sequences, all <= 242 aa, exactly one `(GGGGS)3`
+linker each, 4 cysteines each (no new ones), canonical residues only, every
+design >= 5 edits. **No rule failures.** Their stated edit distances (6, 5,
+8, 9 for the SPR anchors) verified by pairwise alignment — a naive
+position-wise diff reports 125/127 for the two 241 aa sequences because the
+deletion shifts the frame; that was our measurement error, not their file.
+
+### Convergence (independent, and strong)
+| position | them | us |
+|---|---|---|
+| A72R | round-2 confirmed, +0.024 median paired delta | ESM2 +5.18 x AbLang2 +2.22 |
+| N55 (NG deamidation) | mutated in all 11 computational | flagged zone B, free to fix |
+| D102 (DG isomerisation) | mutated in all 11 | D102S dual-model consensus |
+
+Two unrelated pipelines hit the same two liability motifs and the same
+framework mutation.
+
+### Divergence — concentrated risk in their pool
+All 11 computational designs share the **same five positions**
+(31, 55, 102, 163, 226); only the substituted residue varies at 31/55/102,
+and two add A72R. **13 of 15 mutate >= 2 zone-A residues** — every
+computational one changes both D163 (20 A^2, contacts HER2 598) and H226
+(41 A^2, contacts 571/572). Our rules cap this at one zone-A edit.
+
+If H226Y or D163K is wrong, all 11 fail together. This is the correlated
+failure mode the organisers' "pick a diverse 15" is meant to prevent.
+
+The 4 SPR anchors measure 0.63, 0.64, **0.87, 0.94** nM against a 0.82 nM
+parent — two are *worse* than parent, and their own README notes the
+platform is not comparable.
+
+### Their methodology is better than ours in three ways
+* **paired delta vs parent on the same seed** — cancels seed noise, which is
+  stronger than comparing against a separate baseline run
+* **pose_ok_rate** — fraction of seeds keeping a parent-like pose
+* **epitope_jaccard** — overlap of the predicted epitope with the parent's.
+  We had no equivalent. It directly catches a variant that scores well while
+  docking somewhere else entirely. **Adopt this.**
+
+### Correction to our own earlier advice on G103
+`SPR_03` mutates **G103** (our 63 A^2 anchor) plus F104 and measures
+**0.87 nM** vs the 0.82 nM parent — essentially unchanged. `SPR_04` mutates
+W99 and F104 and measures 0.94 nM.
+
+So "never touch G103" is too strong. Within a **coordinated full CDR-H3
+redesign** the loop can be rebuilt around it and still bind sub-nM. The
+warning holds for a *single point mutation* at G103 in an otherwise native
+loop, which is a different proposition. State it that way in the pitch.
+
+### Proposed merge
+Run their validated scoring pipeline over our 53-variant pool, then build
+the 15 from both sources: their top ~5 computational leaders plus our
+conservative / liability / staple tiers, which cover positions they never
+explored. Fixes their concentration and our lack of scores in one step.
+
+---
+
+## 2026-10-31 — Phase 3: Boltz screen
+
+### Merged pool
+`scripts/build_merged60.py` -> `results/merged60.{csv,fasta}`
+60 variants: **22 ours, 11 Saniya's computational, 27 library**, chosen by
+greedy max-min diversity over mutation sets so the three pools do not
+duplicate each other. **44 distinct positions** covered; 27 variants touch no
+zone-A residue.
+
+Plus 3 controls: `parent`, `decoy_Y105A` (the 79 A^2 anchor deleted) and
+`decoy_scrambleH3` (CDR-H3 shuffled). 63 sequences total.
+
+Complex = 242 aa scFv (chain A) + 108 aa HER2 domain IV (chain B) = **350 aa**.
+
+### Pilot (3 runs, seed 1) — the trim is validated
+
+| | ipTM | pTM | pLDDT | d vs parent | epitope Jaccard |
+|---|---|---|---|---|---|
+| parent | 0.8907 | 0.9358 | 0.9125 | — | 1.00 |
+| our_conservative_01 | 0.9150 | 0.9487 | 0.9213 | **+0.0243** | 0.895 |
+| decoy_Y105A | 0.8502 | 0.9223 | 0.9224 | **−0.0405** | 0.75 |
+
+**Parent cofolds at ipTM 0.89 against trimmed domain IV**, so the 490–607 trim
+is sound and the variants can be interpreted against it.
+
+**Noise band: +/- 0.04.** Deleting the single biggest anchor (Y105A, 79 A^2)
+moves ipTM by only 0.0405. Everything between parent and "anchor deleted"
+lives in that 0.04 window, so a variant within +/-0.04 of parent on one seed
+is **not** distinguishable from it. Our +0.0243 variant is inside the band.
+
+Y105A keeps **75% epitope overlap** — removing the anchor degrades the
+interface without relocating it. So epitope Jaccard measures binding quality,
+not mislocalisation, and a genuinely low Jaccard means something odd.
+
+### Cost and timing (measured, not estimated)
+~145 s per complex in steady state (first run 649 s including image build).
+About $0.08 per run => **~$5 per seed, ~$10 for two**. Budget is $30; the
+constraint is wall-clock, not money. Roughly 85% of each run is the GPU
+container idling while it waits on the ColabFold MSA server.
+
+### Gotcha: Modal app-create rate limit
+Launching 6 `modal run` processes in the same second returns
+`RESOURCE_EXHAUSTED: App create rate limit exceeded`. Failures are instant and
+cost nothing, but 8 runs were lost before it was spotted. Fixed in
+`run_boltz_screen.sh` with a 0-25 s jittered start and 4 retries at 30/60/90/
+120 s **only** for rate-limit errors, so a genuine Boltz failure still fails
+fast rather than being retried at $0.08 a go. Default concurrency reduced 6->4.
+
+### Permission note
+`ipsae.py` is cloned third-party code, so Claude cannot execute it under auto
+mode — same as `biomodals` and AbMPNN. Run `bash scripts/run_ipsae.sh 1`
+manually; it is local and free. `scripts/score_screen.py` is ours and runs
+normally.
+
+---
+
 ## Open questions / risks
 
 1. **Kabat vs linear numbering.** CDR-H3 affinity literature cites W98/F100c/
