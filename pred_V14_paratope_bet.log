@@ -1,0 +1,133 @@
+✓ Initialized. View run at https://modal.com/apps/anninaoswald-ops/main/ap-jeyv1q40gLilxqEH5wtsOh
+✓ Created objects.
+├── ✓ Uploaded /Users/annina/biomodals/modal_boltz.py
+├── ✓ Created Function download_model.
+└── ✓ Created Function boltz.
+protein
+protein
+Seed set to 42
+MSA server enabled: https://api.colabfold.com
+MSA server authentication: no credentials provided
+Checking input data.
+Processing 1 inputs with 1 threads.
+
+Generating MSA for /tmp/tmpzuyw6kxu/fixed.yaml with 2 protein entities.
+Calling MSA server for target fixed with 2 sequences
+MSA server URL: https://api.colabfold.com
+MSA pairing strategy: greedy
+No authentication provided for MSA server
+[1A  0%|          | 0/1 [00:00<?, ?it/s]
+
+[1A
+[1A  0%|          | 0/300 [elapsed: 00:00 remaining: ?][A
+
+[1A
+[1ASUBMIT:   0%|          | 0/300 [elapsed: 00:00 remaining: ?][A
+
+[1A
+[1APENDING:   0%|          | 0/300 [elapsed: 00:00 remaining: ?][ASleeping for 10s. Reason: PENDING
+
+
+[1ARUNNING:   0%|          | 0/300 [elapsed: 00:10 remaining: ?][A
+
+[1ARUNNING:   3%|▎         | 10/300 [elapsed: 00:10 remaining: 05:14][ASleeping for 5s. Reason: RUNNING
+
+
+[1A
+[1ARUNNING:   3%|▎         | 10/300 [elapsed: 00:16 remaining: 05:14][A
+
+[1A
+[1ARUNNING:   5%|▌         | 15/300 [elapsed: 00:16 remaining: 05:06][ASleeping for 5s. Reason: RUNNING
+
+
+[1ARUNNING:   5%|▌         | 15/300 [elapsed: 00:21 remaining: 05:06][A
+
+[1ARUNNING:   7%|▋         | 20/300 [elapsed: 00:21 remaining: 04:59][ASleeping for 10s. Reason: RUNNING
+
+
+[1ACOMPLETE:   7%|▋         | 20/300 [elapsed: 00:31 remaining: 04:59][A
+
+[1A
+[1ACOMPLETE: 100%|██████████| 300/300 [elapsed: 00:31 remaining: 00:00][A
+[1ACOMPLETE: 100%|██████████| 300/300 [elapsed: 00:32 remaining: 00:00]
+
+
+[1A  0%|          | 0/300 [elapsed: 00:00 remaining: ?][A
+
+[1ASUBMIT:   0%|          | 0/300 [elapsed: 00:00 remaining: ?][A
+
+[1A
+[1APENDING:   0%|          | 0/300 [elapsed: 00:00 remaining: ?][ASleeping for 7s. Reason: PENDING
+
+
+[1A
+[1ARUNNING:   0%|          | 0/300 [elapsed: 00:07 remaining: ?][A
+
+[1ARUNNING:   2%|▏         | 7/300 [elapsed: 00:07 remaining: 05:26][ASleeping for 6s. Reason: RUNNING
+
+
+[1A
+[1ARUNNING:   2%|▏         | 7/300 [elapsed: 00:14 remaining: 05:26][A
+
+[1A
+[1ARUNNING:   4%|▍         | 13/300 [elapsed: 00:14 remaining: 05:09][ASleeping for 6s. Reason: RUNNING
+
+
+[1A
+[1ARUNNING:   4%|▍         | 13/300 [elapsed: 00:20 remaining: 05:09][A
+
+[1A
+[1ARUNNING:   6%|▋         | 19/300 [elapsed: 00:20 remaining: 04:59][ASleeping for 6s. Reason: RUNNING
+
+
+[1A
+[1ARUNNING:   6%|▋         | 19/300 [elapsed: 00:26 remaining: 04:59][A
+
+[1A
+[1ARUNNING:   8%|▊         | 25/300 [elapsed: 00:26 remaining: 04:51][ASleeping for 10s. Reason: RUNNING
+
+
+[1ARUNNING:   8%|▊         | 25/300 [elapsed: 00:36 remaining: 04:51][A
+
+[1A
+[1ARUNNING:  12%|█▏        | 35/300 [elapsed: 00:36 remaining: 04:36][ASleeping for 5s. Reason: RUNNING
+
+
+[1A
+[1ARUNNING:  12%|█▏        | 35/300 [elapsed: 00:42 remaining: 04:36][A
+
+[1ARUNNING:  13%|█▎        | 40/300 [elapsed: 00:42 remaining: 04:32][ASleeping for 10s. Reason: RUNNING
+
+
+[1A
+[1ACOMPLETE:  13%|█▎        | 40/300 [elapsed: 00:52 remaining: 04:32][A
+
+[1A
+[1ACOMPLETE: 100%|██████████| 300/300 [elapsed: 00:52 remaining: 00:00][ACOMPLETE: 100%|██████████| 300/300 [elapsed: 00:53 remaining: 00:00]
+
+[1A100%|██████████| 1/1 [01:26<00:00, 86.78s/it]100%|██████████| 1/1 [01:26<00:00, 86.78s/it]
+Using bfloat16 Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+/opt/conda/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/logger_connector/logger_connector.py:76: Starting from v1.9.0, `tensorboardX` has been removed as a dependency of the `pytorch_lightning` package, due to potential conflicts with other packages in the ML ecosystem. For this reason, `logger=True` will use `CSVLogger` as the default logger, unless the `tensorboard` or `tensorboardX` packages are found. Please `pip install lightning[extra]` or one of them to enable TensorBoard support by default
+Running structure prediction for 1 input.
+/opt/conda/lib/python3.11/site-packages/pytorch_lightning/utilities/migration/utils.py:56: The loaded checkpoint was produced with Lightning v2.5.0.post0, which is newer than your current Lightning version: v2.5.0
+You are using a CUDA device ('NVIDIA L40S') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/opt/conda/lib/python3.11/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+
+[1APredicting: |          | 0/? [00:00<?, ?it/s]
+[1APredicting:   0%|          | 0/1 [00:00<?, ?it/s]
+/opt/conda/lib/python3.11/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/opt/conda/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+/opt/conda/lib/python3.11/site-packages/cuequivariance_ops_torch/triangle_attention.py:623: UserWarning: Generic kernel expects bias to be float32 so it's going to be cast to torch.float32. Check if you can change your code for maximum performance.
+  warn_eager_only(
+[1APredicting DataLoader 0:   0%|          | 0/1 [00:00<?, ?it/s]
+[1APredicting DataLoader 0: 100%|██████████| 1/1 [00:23<00:00,  0.04it/s]Number of failed examples: 0
+
+[1APredicting DataLoader 0: 100%|██████████| 1/1 [00:23<00:00,  0.04it/s]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at https://modal.com/apps/anninaoswald-ops/main/ap-jeyv1q40gLilxqEH5wtsOh
