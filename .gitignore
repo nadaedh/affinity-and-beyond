@@ -1,0 +1,17 @@
+# Local Claude Code state. The protein design skills are installed per-machine,
+# not vendored here -- see README for the install commands.
+.claude/
+
+# Python env for the Modal CLI
+.venv/
+
+# Upstream Modal run scripts: cloned, not ours
+# git clone https://github.com/hgbrian/biomodals
+biomodals/
+
+# Design run outputs
+out/
+*.pdb.gz
+
+# Cloned tools + model weights (see notes/lab-notebook.md for install)
+tools/
