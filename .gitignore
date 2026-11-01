@@ -1,0 +1,15 @@
+# Raw Boltz predictions (~1 GB of structures, PAE matrices and MSAs).
+# Regenerate with methods/nada/run_boltz_screen.sh
+results/
+
+# Cloned third-party tools and model weights
+tools/
+biomodals/
+
+# Local environment
+.venv/
+__pycache__/
+*.pyc
+
+# Per-machine Claude Code state (the skills are installed, not vendored)
+.claude/

@@ -1,0 +1,38 @@
+MIT License
+
+Copyright (c) 2026 Affinity and Beyond contributors
+(Nada Eddahir, Saniya, Dominik, Annina, Max, Stella)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+DATA
+
+Sequence data, screening scores and analysis outputs in this repository are
+released under Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+THIRD-PARTY MATERIAL, under its own terms:
+  PDB 1N8Z            RCSB Protein Data Bank
+  AbMPNN weights      Exscientia, CC BY 4.0, Zenodo 8164693
+  ProteinMPNN code    MIT, github.com/dauparas/ProteinMPNN
+  AbLang2             github.com/oxpig/AbLang2
+  ESM2                Meta AI, MIT
+  Boltz               github.com/jwohlwend/boltz
+  Mason et al. CDR-H3 library, as used in methods/stella/

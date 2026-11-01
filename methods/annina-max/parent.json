@@ -1,0 +1,58 @@
+{
+  "name": "trastuzumab_scFv_parent",
+  "description": "Parent scFv for the Adaptyv HerCode hackathon HER2 challenge",
+  "source": "Adaptyv Zurich hackathon deck, slide 15 (2026-10-30)",
+  "format": "VH-(GGGGS)3-VL",
+  "length": 242,
+  "parent_kd_nM": 0.82,
+  "kd_method": "BLI, Adaptyv platform",
+  "target": {
+    "name": "HER2 extracellular domain",
+    "uniprot": "P04626",
+    "range": "Thr23-Thr652",
+    "length": 630,
+    "epitope_domain": "IV",
+    "structure": "PDB 1N8Z (2.52 A)"
+  },
+  "constraints": {
+    "min_mutations_from_parent": 5,
+    "max_length": 260,
+    "architecture_fixed": "VH, (GGGGS)3, VL, single chain"
+  },
+  "domains": {
+    "vh": {
+      "seq": "EVQLVESGGGLVQPGGSLRLSCAASGFNIKDTYIHWVRQAPGKGLEWVARIYPTNGYTRYADSVKGRFTISADTSKNTAYLQMNSLRAEDTAVYYCSRWGGDGFYAMDYWGQGTLVTVSS",
+      "length": 120,
+      "scfv_start": 1,
+      "scfv_end": 120,
+      "pdb_chain": "1N8Z:B"
+    },
+    "linker": {
+      "seq": "GGGGSGGGGSGGGGS",
+      "length": 15,
+      "scfv_start": 121,
+      "scfv_end": 135,
+      "mutable": false,
+      "note": "Exclude from all PLM scans - unnatural sequence, models assign spurious likelihoods"
+    },
+    "vl": {
+      "seq": "DIQMTQSPSSLSASVGDRVTITCRASQDVNTAVAWYQQKPGKAPKLLIYSASFLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQHYTTPPTFGQGTKVEIK",
+      "length": 107,
+      "scfv_start": 136,
+      "scfv_end": 242,
+      "pdb_chain": "1N8Z:A",
+      "offset_note": "VL residue A(n) in 1N8Z = scFv position n + 135"
+    }
+  },
+  "full_sequence": "EVQLVESGGGLVQPGGSLRLSCAASGFNIKDTYIHWVRQAPGKGLEWVARIYPTNGYTRYADSVKGRFTISADTSKNTAYLQMNSLRAEDTAVYYCSRWGGDGFYAMDYWGQGTLVTVSSGGGGSGGGGSGGGGSDIQMTQSPSSLSASVGDRVTITCRASQDVNTAVAWYQQKPGKAPKLLIYSASFLYSGVPSRFSGSRSGTDFTLTISSLQPEDFATYYCQQHYTTPPTFGQGTKVEIK",
+  "liability_motifs": {
+    "N84-S85": {"chain": "VH", "region": "FR3", "type": "deamidation", "dist_her2_A": ">8.5", "verdict": "free"},
+    "D62-S63": {"chain": "VH", "region": "FR3", "type": "isomerisation", "dist_her2_A": ">8.5", "verdict": "free"},
+    "N55-G56": {"chain": "VH", "region": "CDR2", "type": "deamidation", "dist_her2_A": 5.31, "verdict": "second_shell"},
+    "D102-G103": {"chain": "VH", "region": "CDR3", "type": "isomerisation", "dist_her2_A": 5.08, "verdict": "known_liability_at_paratope"}
+  },
+  "do_not_mutate": {
+    "positions_scfv": [103, 226, 229, 50, 59, 99, 104, 105],
+    "reason": "G103 = deepest contact (2.42 A), backbone-mediated; others are dual-role paratope + VH/VL interface"
+  }
+}
